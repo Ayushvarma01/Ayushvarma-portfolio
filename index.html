@@ -682,25 +682,31 @@
           </div>
         </div>
 
+        <!-- Form - REAL Formspree connection -->
         <div class="contact-form-card">
           <form id="contact-form" action="https://formspree.io/f/mwvnbvwd" method="POST">
-            <!-- Add this hidden field if you want to redirect after success -->
+            <!-- Honeypot anti-spam field (invisible) -->
             <input type="text" name="_gotcha" style="display:none" />
+
             <div class="form-group">
-              <label for="name">Full Name <span style="color:red">*</span></label>
-              <input type="text" id="name" name="name" placeholder="Your name" required value="Ayush">
+              <label for="name">Full Name <span style="color:#e11d48">*</span></label>
+              <input type="text" id="name" name="name" placeholder="Your name" required>
             </div>
 
             <div class="form-group">
-              <label for="email">Email Address <span style="color:red">*</span></label>
-              <input type="email" id="email" name="email" placeholder="your.email@example.com" required
-                value="ayush@gmail.com">
+              <label for="email">Email Address <span style="color:#e11d48">*</span></label>
+              <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
             </div>
 
             <div class="form-group">
-              <label for="message">Message</label>
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="e.g. Job opportunity, Collaboration">
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message <span style="color:#e11d48">*</span></label>
               <textarea id="message" name="message" rows="6"
-                placeholder="Tell me about your project or idea..."></textarea>
+                placeholder="Tell me about your project, job role, or idea..." required></textarea>
             </div>
 
             <button type="submit" class="submit-btn">
@@ -737,7 +743,7 @@
       });
     });
 
-    // Scroll animations + navbar active link
+    // Scroll animations + active link
     const scrollElements = document.querySelectorAll('.card, h2');
     const sections = document.querySelectorAll("section[id]");
     const navLinks = document.querySelectorAll(".nav-links a");
@@ -748,10 +754,7 @@
           entry.target.classList.add('visible');
         }
       });
-    }, {
-      threshold: 0.15,
-      rootMargin: "0px 0px -80px 0px"
-    });
+    }, { threshold: 0.15 });
 
     scrollElements.forEach(el => observer.observe(el));
 
@@ -772,20 +775,18 @@
       document.querySelector("header").classList.toggle("scrolled", window.scrollY > 60);
     });
 
-    // Contact form demo
-    document.getElementById('contact-form').addEventListener('submit', function (e) {
-      e.preventDefault();
+    // Formspree submission feedback (optional enhancement)
+    // This is optional - Formspree already redirects to their thank-you page
+    // If you want on-page message instead, uncomment below:
+    /*
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      // e.preventDefault();  ← remove this line if you want Formspree redirect
       const formMessage = document.getElementById('form-message');
-      formMessage.textContent = "Thank you! Your message has been sent. I'll get back to you soon.";
-      formMessage.className = 'form-message success';
-      this.reset();
-      setTimeout(() => {
-        formMessage.textContent = '';
-        formMessage.className = 'form-message';
-      }, 6000);
+      formMessage.textContent = "Sending...";
+      formMessage.className = 'form-message';
     });
+    */
   </script>
 </body>
-
 
 </html>
