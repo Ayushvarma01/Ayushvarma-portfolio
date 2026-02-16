@@ -682,9 +682,10 @@
           </div>
         </div>
 
-        <div class="contact-form-card" action="https://formspree.io/f/mwvnbvwd" method="POST">
-          <form id="contact-form">
+        <div class="contact-form-card">
+          <form id="contact-form" action="https://formspree.io/f/mwvnbvwd" method="POST">
             <!-- Add this hidden field if you want to redirect after success -->
+            <input type="text" name="_gotcha" style="display:none" />
             <div class="form-group">
               <label for="name">Full Name <span style="color:red">*</span></label>
               <input type="text" id="name" name="name" placeholder="Your name" required value="Ayush">
@@ -785,5 +786,6 @@
     });
   </script>
 </body>
+
 
 </html>
