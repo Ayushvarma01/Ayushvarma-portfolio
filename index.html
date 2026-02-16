@@ -188,6 +188,41 @@
       gap: 0.6rem;
     }
 
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+.btn {
+      padding: 0.9rem 2.2rem;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(99, 102, 241, 0.4);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
     /* General section styling */
     section {
       padding: 7rem 1.5rem 5rem;
@@ -434,7 +469,7 @@
     }
 
     .submit-btn:hover {
-      background: var(--primary-d);
+      background: var(--primary-dark);
       transform: translateY(-3px);
     }
 
@@ -515,6 +550,13 @@
         <a href="https://www.linkedin.com/in/ayush-varma-01av" target="_blank"><i class="fab fa-linkedin"></i>
           LinkedIn</a>
         <span><i class="fas fa-map-marker-alt"></i> Mumbai, India</span>
+      </div>
+
+      <!-- Download Resume Button -->
+      <div class="btn-group">
+        <a href="Ayush Varma Resume.pdf" class="btn btn-primary" download>
+          <i class="fas fa-file-pdf"></i> Download Resume (PDF)
+        </a>
       </div>
     </div>
   </section>
@@ -675,16 +717,6 @@
           </div>
 
           <div class="info-item">
-            <i class="fa-brands fa-github"></i>
-            <div>
-              <strong>Github</strong>
-              <a href="https://github.com/Ayushvarma01" target="_blank">
-                https://github.com/Ayushvarma01
-              </a>
-            </div>
-          </div>
-          
-          <div class="info-item">
             <i class="fas fa-map-marker-alt"></i>
             <div>
               <strong>Location</strong>
@@ -693,13 +725,10 @@
           </div>
         </div>
 
-       <!-- Real Formspree Form -->
+        <!-- Form - REAL Formspree connection -->
         <div class="contact-form-card">
-          <form
-            action="https://formspree.io/f/mwvnbvwd"
-            method="POST"
-          >
-            <!-- Honeypot anti-spam (invisible to humans) -->
+          <form id="contact-form" action="https://formspree.io/f/mwvnbvwd" method="POST">
+            <!-- Honeypot anti-spam field (invisible) -->
             <input type="text" name="_gotcha" style="display:none" />
 
             <div class="form-group">
@@ -713,8 +742,14 @@
             </div>
 
             <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="6" placeholder="Tell me about your project, job role, or idea..."></textarea>
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="e.g. Job opportunity, Collaboration">
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message <span style="color:#e11d48">*</span></label>
+              <textarea id="message" name="message" rows="6"
+                placeholder="Tell me about your project, job role, or idea..." required></textarea>
             </div>
 
             <button type="submit" class="submit-btn">
@@ -782,7 +817,19 @@
 
       document.querySelector("header").classList.toggle("scrolled", window.scrollY > 60);
     });
+
+    // Formspree submission feedback (optional enhancement)
+    // This is optional - Formspree already redirects to their thank-you page
+    // If you want on-page message instead, uncomment below:
+    /*
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      // e.preventDefault();  ← remove this line if you want Formspree redirect
+      const formMessage = document.getElementById('form-message');
+      formMessage.textContent = "Sending...";
+      formMessage.className = 'form-message';
+    });
+    */
   </script>
 </body>
-</html>
 
+</html>
