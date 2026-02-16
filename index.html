@@ -682,10 +682,13 @@
           </div>
         </div>
 
-        <!-- Form - REAL Formspree connection -->
+       <!-- Real Formspree Form -->
         <div class="contact-form-card">
-          <form id="contact-form" action="https://formspree.io/f/mwvnbvwd" method="POST">
-            <!-- Honeypot anti-spam field (invisible) -->
+          <form
+            action="https://formspree.io/f/mwvnbvwd"
+            method="POST"
+          >
+            <!-- Honeypot anti-spam (invisible to humans) -->
             <input type="text" name="_gotcha" style="display:none" />
 
             <div class="form-group">
@@ -705,8 +708,7 @@
 
             <div class="form-group">
               <label for="message">Message <span style="color:#e11d48">*</span></label>
-              <textarea id="message" name="message" rows="6"
-                placeholder="Tell me about your project, job role, or idea..." required></textarea>
+              <textarea id="message" name="message" rows="6" placeholder="Tell me about your project, job role, or idea..." required></textarea>
             </div>
 
             <button type="submit" class="submit-btn">
@@ -774,19 +776,6 @@
 
       document.querySelector("header").classList.toggle("scrolled", window.scrollY > 60);
     });
-
-    // Formspree submission feedback (optional enhancement)
-    // This is optional - Formspree already redirects to their thank-you page
-    // If you want on-page message instead, uncomment below:
-    /*
-    document.getElementById('contact-form').addEventListener('submit', async function(e) {
-      // e.preventDefault();  ← remove this line if you want Formspree redirect
-      const formMessage = document.getElementById('form-message');
-      formMessage.textContent = "Sending...";
-      formMessage.className = 'form-message';
-    });
-    */
   </script>
 </body>
-
 </html>
